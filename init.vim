@@ -50,6 +50,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 "Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'cocopon/iceberg.vim'
 
 
 if isdirectory('/usr/local/opt/fzf')
@@ -100,10 +101,14 @@ filetype plugin indent on
 let g:LanguageClient_serverCommands = {
   \ 'cpp': ['clangd'],
   \ }
+  "\ 'ts': ['typescript-language-server','--stdio'],
 nmap <silent> K <Plug>(lcn-hover)
 nmap <silent> gd <Plug>(lcn-definition)
 nmap <silent> R <Plug>(lcn-rename)
 let g:deoplete#enable_at_startup = 1
+" <TAB>: completion.
+inoremap <expr><C-j>  pumvisible() ? "\<C-n>" : "\<C-j>""
+inoremap <expr><C-k>  pumvisible() ? "\<C-p>" : "\<C-k>""
 "*****************************************************************************
 "" Basic Setup
 "*****************************************************************************"
@@ -154,13 +159,18 @@ let g:session_command_aliases = 1
 syntax on
 set ruler
 set number
+set relativenumber
 
 let no_buffers_menu=1
-colorscheme dracula
+set t_Co=256
+colorscheme iceberg
+highlight Normal ctermbg=0
+hi Linenr ctermbg=black ctermfg=129
+hi CursorLinenr ctermbg=black ctermfg=129
+highlight EndOfBuffer ctermbg=black
 
 
 set mousemodel=popup
-set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
 
