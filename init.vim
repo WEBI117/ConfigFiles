@@ -19,8 +19,8 @@ Plug 'Yggdroot/indentLine'                     " Show Indents
 
 "" Colour themes
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'cocopon/iceberg.vim'
 Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
 
 "" Vim-Session
 Plug 'xolox/vim-misc'
@@ -125,12 +125,20 @@ set relativenumber
 
 let no_buffers_menu=1
 set t_Co=256
+" This is only necessary if you use "set termguicolors".
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+"let ayucolor="dark"
 colorscheme gruvbox
-highlight Normal ctermbg=None
-hi Linenr ctermbg=None ctermfg=129
-hi CursorLinenr ctermbg=None ctermfg=129
-highlight EndOfBuffer ctermbg=None
-
+highlight Normal guibg=None
+hi Linenr guibg=None
+hi CursorLinenr guibg=None
+highlight EndOfBuffer guibg=None
+"highlight Normal ctermbg=None
+"hi Linenr ctermbg=None ctermfg=129
+"hi CursorLinenr ctermbg=None ctermfg=129
+"highlight EndOfBuffer ctermbg=None
 
 if has("gui_running")
 if has("gui_mac") || has("gui_macvim")
